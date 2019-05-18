@@ -27,6 +27,19 @@ $("#add-fruit").on("click", function() {
 
   });
 
+$(document).on("click", ".gif", function() {
+    var state = $(this).attr("gif-state");
+
+    if (state === "still") {
+    $(this).attr("src", $(this).attr("gif-animate"));
+    $(this).attr("gif-state", "animate");
+} 
+else {
+    $(this).attr("src", $(this).attr("gif-still"));
+    $(this).attr("gif-state", "still");
+}
+});
+
 renderButtons();
 
 $(document).on("click", ".fruit-group", function() {
@@ -55,7 +68,11 @@ $(document).on("click", ".fruit-group", function() {
 
       var fruitGif = $("<img>");
 
-      fruitGif.attr('src', results[i].images.fixed_height.url);
+      fruitGif.attr('src', results[i].images.fixed_width_still.url);
+      fruitGif.attr('gif-still', results[i].images.fixed_width_still.url);
+      fruitGif.attr('gif-animate', results[i].images.fixed_width.url);
+      fruitGif.attr('gif-state', "still");
+      fruitGif.attr('class', "gif");
 
       fruitDiv.append(p);
 
@@ -67,3 +84,5 @@ $(document).on("click", ".fruit-group", function() {
 
     });
   });
+
+  
