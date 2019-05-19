@@ -2,16 +2,16 @@ var topics = ["apple", "banana", "lemon", "lime", "mango"];
 
 function renderButtons() {
 
-    $("#fruit-buttons").empty();
+  $("#fruit-buttons").empty();
 
-    for (var i = 0; i < topics.length; i++) {
-      var newfruit = $("<button>");
-      newfruit.text(topics[i]);
-      newfruit.attr("data-fruit", topics[i]);
-      newfruit.attr("class", "fruit-group");
-      $("#fruit-buttons").append(newfruit);
+  for (var i = 0; i < topics.length; i++) {
+    var newfruit = $("<button>");
+    newfruit.text(topics[i]);
+    newfruit.attr("data-fruit", topics[i]);
+    newfruit.attr("class", "fruit-group");
+    $("#fruit-buttons").append(newfruit);
 
-    }
+  }
 
 }
 
@@ -43,7 +43,7 @@ else {
 renderButtons();
 
 $(document).on("click", ".fruit-group", function() {
-    var fruit = $(this).attr("data-fruit");
+    var fruit = $(this).attr("data-fruit").trim();
     var api_key = "&api_key=GFIHFicY1XEDTegb3grxyAzfTQ35fowX&limit=10";
     var limit = "&limit=10"
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
